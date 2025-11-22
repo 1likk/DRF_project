@@ -23,7 +23,7 @@ class Note(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        # Возращает строковое представление обьекта 
+        """Возвращает строковое представление объекта"""
         return self.title[:50]
 
 

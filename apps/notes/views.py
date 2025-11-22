@@ -1,4 +1,4 @@
-# Содержит представления для оброботки запросов API
+# Содержит представления для обработки запросов API
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.utils.decorators import method_decorator
@@ -11,7 +11,7 @@ class NoteListCreateView(generics.ListCreateAPIView):
     queryset = Note.objects.all()
 
     def get_serializer_class(self):
-        # Возвращает подходящий сериализатор в зависимости от запроса 
+        """Возвращает подходящий сериализатор в зависимости от метода запроса""" 
         if self.request.method == 'POST':
             return NoteCreateSerializer
         return NoteSerializer
