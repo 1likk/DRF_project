@@ -23,13 +23,13 @@ class NoteListCreateView(generics.ListCreateAPIView):
 class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
      queryset = Note.objects.all()
 
-     def get_serializer(self):
+     def get_serializer_class(self):
          if self.request.method in ['PUT', 'PATCH']:
              return NoteUpdateSerializer
          return NoteSerializer
      
      def update(self, request, *args, **kwargs):
-         partial = kwargs.pop('partial, False')
+         partial = kwargs.pop('partial', False)
          instance = self.get_object()
          serializer = self.get_serializer(instance, data=request.data, partial=partial)
 
@@ -39,10 +39,10 @@ class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
      
      def destroy(self, request, *args, **kwargs):
-         instanse = self.get_object()
-         self.perform_destroy(instanse)
+         instance = self.get_object()
+         self.perform_destroy(instance)
          return Response(
-             {'message': 'Заметка успешна удалена'},
+             {'message': 'Заметка успешно удалена'},
              status=status.HTTP_204_NO_CONTENT,
          )
      

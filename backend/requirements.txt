@@ -1,0 +1,15 @@
+# Django Core
+Django==5.2.7
+djangorestframework==3.16.1
+
+# Database
+psycopg2-binary==2.9.11
+
+# Configuration
+python-decouple==3.8
+
+# CORS Support
+django-cors-headers==4.9.0
+
+# Filtering
+django-filter==25.2
